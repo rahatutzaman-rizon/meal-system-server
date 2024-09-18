@@ -24,7 +24,9 @@ client.connect().then(() => {
   const usersCollection = db.collection('users');
   const mealsCollection = db.collection('meals');
   const totalsCollection = db.collection('totals');
-  const bazarCollection = db.collection('bazars');
+  const depositCollection = db.collection('deposit');
+  const billCollection =db.collection('bill');
+  const bazarCollection =db.collection('bazars');
   
     // Get meals data
     app.get('/meals', async (req, res) => {
@@ -43,6 +45,21 @@ client.connect().then(() => {
       const bazars = await bazarCollection.find({}).toArray();
       res.json(bazars);
     });
+
+
+    //deposit
+    app.get('/deposit', async (req, res) => {
+      const deposit = await depositCollection.find({}).toArray();
+      res.json(deposit);
+    });
+  
+
+    //bill
+    app.get('/bill', async (req, res) => {
+      const bill = await billCollection.find({}).toArray();
+      res.json(bill);
+    });
+  
   
   
   
